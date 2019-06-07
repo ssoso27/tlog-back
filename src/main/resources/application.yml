@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/tlog_db?useUnicode=yes&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost/tlog_db?serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: tlog
     password: tlog1234
