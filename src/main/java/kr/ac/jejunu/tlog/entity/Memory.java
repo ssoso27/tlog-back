@@ -1,6 +1,8 @@
 package kr.ac.jejunu.tlog.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,12 +12,15 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "memories")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Memory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "place_id")
+    @ManyToOne(targetEntity = Place.class)
+    @JoinColumn(name="place_id", nullable = false)
     private Integer placeId;
 
     @Column(name = "name")

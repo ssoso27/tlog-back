@@ -1,6 +1,8 @@
 package kr.ac.jejunu.tlog.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,12 +12,15 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "tlogs")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Tlog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "user_id")
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name="user_id", nullable = false)
     private Integer userId;
 
     @Column(name = "title")
