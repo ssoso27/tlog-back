@@ -11,29 +11,20 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "tlogs")
+@Table(name="hashtags")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tlog {
+public class Hashtag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name="user_id", nullable = false)
-    private Integer userId;
+    @ManyToOne(targetEntity = Hashtag.class)
+    @JoinColumn(name="tlog_id", nullable = false)
+    private Integer tlogId;
 
-    @Column(name = "title")
-    private String title;
-
-    @Column(name = "background_img")
-    private String backgroundImg;
-
-    @Column(name = "start_date")
-    private LocalDateTime startDate;
-
-    @Column(name = "last_date")
-    private LocalDateTime lastDate;
+    @Column(name = "content")
+    private String content;
 
     @Column(name = "data_created")
     private LocalDateTime dateCreated;

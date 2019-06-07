@@ -11,29 +11,25 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "tlogs")
+@Table(name="users")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tlog {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name="user_id", nullable = false)
-    private Integer userId;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "password")
+    private String password;
 
-    @Column(name = "background_img")
-    private String backgroundImg;
+    @Column(name = "nickname")
+    private String nickname;
 
-    @Column(name = "start_date")
-    private LocalDateTime startDate;
-
-    @Column(name = "last_date")
-    private LocalDateTime lastDate;
+    @Column(name = "profile_img")
+    private String profileImg;
 
     @Column(name = "data_created")
     private LocalDateTime dateCreated;

@@ -11,29 +11,29 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "tlogs")
+@Table(name = "memories")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tlog {
+public class Memory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name="user_id", nullable = false)
-    private Integer userId;
+    @ManyToOne(targetEntity = Place.class)
+    @JoinColumn(name="place_id", nullable = false)
+    private Integer placeId;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "background_img")
-    private String backgroundImg;
+    @Column(name = "image")
+    private String image;
 
-    @Column(name = "start_date")
-    private LocalDateTime startDate;
+    @Column(name = "content")
+    private String content;
 
-    @Column(name = "last_date")
-    private LocalDateTime lastDate;
+    @Column(name = "order")
+    private Integer order;
 
     @Column(name = "data_created")
     private LocalDateTime dateCreated;
