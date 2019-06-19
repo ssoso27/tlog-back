@@ -14,10 +14,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name="tdates")
-public class TDate extends BaseEntity {
+public class Tdate extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name="date")
     private LocalDate date;

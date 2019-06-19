@@ -17,11 +17,11 @@ import java.time.LocalDateTime;
 public class Place extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @ManyToOne(targetEntity = TDate.class)
+    @ManyToOne(targetEntity = Tdate.class)
     @JoinColumn(name="tdate_id", nullable = false)
-    private TDate tdate;
+    private Tdate tdate;
 
     @Column(name = "name")
     private String name;

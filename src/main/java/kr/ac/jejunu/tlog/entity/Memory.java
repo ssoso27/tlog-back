@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Memory extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne(targetEntity = Place.class)
     @JoinColumn(name="place_id", nullable = false)

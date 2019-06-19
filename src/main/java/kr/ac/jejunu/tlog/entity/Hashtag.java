@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Hashtag extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne(targetEntity = Hashtag.class)
     @JoinColumn(name="tlog_id", nullable = false)

@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class Tlog extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne(targetEntity = Account.class)
     @JoinColumn(name="account_id", nullable = false)
