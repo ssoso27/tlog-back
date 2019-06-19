@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Table(name = "tlogs")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tlog {
+public class Tlog extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -30,14 +30,8 @@ public class Tlog {
     private String backgroundImg;
 
     @Column(name = "start_date")
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     @Column(name = "last_date")
-    private LocalDateTime lastDate;
-
-    @Column(name = "data_created")
-    private LocalDateTime dateCreated;
-
-    @Column(name = "last_updated")
-    private LocalDateTime lastUpdated;
+    private LocalDate lastDate;
 }

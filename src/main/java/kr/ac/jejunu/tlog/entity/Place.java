@@ -14,14 +14,14 @@ import java.time.LocalDateTime;
 @Table(name="places")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Place {
+public class Place extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(targetEntity = Tlog.class)
-    @JoinColumn(name="tlog_id", nullable = false)
-    private Integer tlogId;
+    @ManyToOne(targetEntity = TDate.class)
+    @JoinColumn(name="tdate_id", nullable = false)
+    private Integer tdateId;
 
     @Column(name = "name")
     private String name;
@@ -31,10 +31,4 @@ public class Place {
 
     @Column(name = "order")
     private Integer order;
-
-    @Column(name = "data_created")
-    private LocalDateTime dateCreated;
-
-    @Column(name = "last_updated")
-    private LocalDateTime lastUpdated;
 }

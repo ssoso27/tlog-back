@@ -6,22 +6,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
-@Entity
-@Table(name="hashtags")
-@NoArgsConstructor
 @AllArgsConstructor
-public class Hashtag extends BaseEntity {
+@NoArgsConstructor
+@Entity
+@Table(name="tdates")
+public class TDate extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(targetEntity = Hashtag.class)
+    @Column(name="date")
+    private LocalDate date;
+
+    @ManyToOne(targetEntity = Tlog.class)
     @JoinColumn(name="tlog_id", nullable = false)
     private Integer tlogId;
-
-    @Column(name = "content")
-    private String content;
 }
