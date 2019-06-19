@@ -18,7 +18,7 @@ public class Hashtag extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(targetEntity = Hashtag.class)
+    @ManyToOne(targetEntity = Tlog.class)
     @JoinColumn(name="tlog_id", nullable = false)
     private Tlog tlog;
 

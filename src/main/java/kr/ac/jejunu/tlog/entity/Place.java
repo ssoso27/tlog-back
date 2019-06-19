@@ -26,9 +26,6 @@ public class Place extends BaseEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "trip_date")
-    private LocalDateTime tripDate;
-
     @Column(name = "order")
     private Integer order;
 }

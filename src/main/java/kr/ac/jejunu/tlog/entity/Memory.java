@@ -22,9 +22,6 @@ public class Memory extends BaseEntity {
     @JoinColumn(name="place_id", nullable = false)
     private Place place;
 
-    @Column(name = "name")
-    private String name;
-
     @Column(name = "image")
     private String image;
 
