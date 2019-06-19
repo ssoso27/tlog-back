@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -14,14 +14,14 @@ import java.time.LocalDateTime;
 @Table(name = "tlogs")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tlog {
+public class Tlog extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name="user_id", nullable = false)
-    private Integer userId;
+    @ManyToOne(targetEntity = Account.class)
+    @JoinColumn(name="account_id", nullable = false)
+    private Account account;
 
     @Column(name = "title")
     private String title;
@@ -30,14 +30,8 @@ public class Tlog {
     private String backgroundImg;
 
     @Column(name = "start_date")
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     @Column(name = "last_date")
-    private LocalDateTime lastDate;
-
-    @Column(name = "data_created")
-    private LocalDateTime dateCreated;
-
-    @Column(name = "last_updated")
-    private LocalDateTime lastUpdated;
+    private LocalDate lastDate;
 }

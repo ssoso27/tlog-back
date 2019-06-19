@@ -6,18 +6,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Entity
-@Table(name="users")
+@Table(name="accounts")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Account extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "email")
     private String email;
@@ -30,10 +29,4 @@ public class User {
 
     @Column(name = "profile_img")
     private String profileImg;
-
-    @Column(name = "data_created")
-    private LocalDateTime dateCreated;
-
-    @Column(name = "last_updated")
-    private LocalDateTime lastUpdated;
 }

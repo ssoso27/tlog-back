@@ -14,27 +14,18 @@ import java.time.LocalDateTime;
 @Table(name="places")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Place {
+public class Place extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @ManyToOne(targetEntity = Tlog.class)
-    @JoinColumn(name="tlog_id", nullable = false)
-    private Integer tlogId;
+    @ManyToOne(targetEntity = Tdate.class)
+    @JoinColumn(name="tdate_id", nullable = false)
+    private Tdate tdate;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "trip_date")
-    private LocalDateTime tripDate;
-
     @Column(name = "order")
     private Integer order;
-
-    @Column(name = "data_created")
-    private LocalDateTime dateCreated;
-
-    @Column(name = "last_updated")
-    private LocalDateTime lastUpdated;
 }

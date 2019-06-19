@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -14,17 +13,14 @@ import java.time.LocalDateTime;
 @Table(name = "memories")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Memory {
+public class Memory extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne(targetEntity = Place.class)
     @JoinColumn(name="place_id", nullable = false)
-    private Integer placeId;
-
-    @Column(name = "name")
-    private String name;
+    private Place place;
 
     @Column(name = "image")
     private String image;
@@ -34,10 +30,4 @@ public class Memory {
 
     @Column(name = "order")
     private Integer order;
-
-    @Column(name = "data_created")
-    private LocalDateTime dateCreated;
-
-    @Column(name = "last_updated")
-    private LocalDateTime lastUpdated;
 }
