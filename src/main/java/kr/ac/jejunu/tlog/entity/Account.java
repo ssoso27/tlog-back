@@ -10,10 +10,10 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name="users")
+@Table(name="accounts")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends BaseEntity {
+public class Account extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

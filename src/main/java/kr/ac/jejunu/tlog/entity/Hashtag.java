@@ -20,7 +20,7 @@ public class Hashtag extends BaseEntity {
 
     @ManyToOne(targetEntity = Hashtag.class)
     @JoinColumn(name="tlog_id", nullable = false)
-    private Integer tlogId;
+    private Tlog tlog;
 
     @Column(name = "content")
     private String content;

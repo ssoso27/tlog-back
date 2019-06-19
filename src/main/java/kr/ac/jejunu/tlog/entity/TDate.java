@@ -24,5 +24,5 @@ public class TDate extends BaseEntity {
 
     @ManyToOne(targetEntity = Tlog.class)
     @JoinColumn(name="tlog_id", nullable = false)
-    private Integer tlogId;
+    private Tlog tlog;
 }

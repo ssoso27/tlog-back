@@ -21,7 +21,7 @@ public class Place extends BaseEntity {
 
     @ManyToOne(targetEntity = TDate.class)
     @JoinColumn(name="tdate_id", nullable = false)
-    private Integer tdateId;
+    private TDate tdate;
 
     @Column(name = "name")
     private String name;

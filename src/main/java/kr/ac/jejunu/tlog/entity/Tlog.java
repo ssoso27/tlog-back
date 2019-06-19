@@ -19,9 +19,9 @@ public class Tlog extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name="user_id", nullable = false)
-    private Integer userId;
+    @ManyToOne(targetEntity = Account.class)
+    @JoinColumn(name="account_id", nullable = false)
+    private Account account;
 
     @Column(name = "title")
     private String title;

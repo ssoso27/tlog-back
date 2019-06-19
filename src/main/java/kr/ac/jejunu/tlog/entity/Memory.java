@@ -20,7 +20,7 @@ public class Memory extends BaseEntity {
 
     @ManyToOne(targetEntity = Place.class)
     @JoinColumn(name="place_id", nullable = false)
-    private Integer placeId;
+    private Place place;
 
     @Column(name = "name")
     private String name;
