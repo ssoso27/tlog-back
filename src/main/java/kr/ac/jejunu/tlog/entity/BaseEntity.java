@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public class BaseEntity {
     @Column(name = "data_created")
-    protected LocalDateTime dateCreated;
+    protected LocalDateTime dataCreated;
 
     @Column(name = "last_updated")
     protected LocalDateTime lastUpdated;
