@@ -15,6 +15,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -42,22 +44,29 @@ public class TlogService {
     }
 
     public Long create(TlogDTO tlogDTO) {
-        String fileName = StringUtils.cleanPath(tlogDTO.getBackgroundImg().getOriginalFilename());
+        String fileName = "";
+        String savedFileName = "";
 
-        // 이미지 저장
-        try {
-            // 파일명에 부적합 문자가 있는지 확인한다.
-            if(fileName.contains(".."))
-                throw new FileUploadException("파일명에 부적합 문자가 포함되어 있습니다. " + fileName);
-            Path targetLocation = this.fileLocation.resolve(fileName);
-            Files.copy(tlogDTO.getBackgroundImg().getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
-        }catch(Exception e) {
-            throw new FileUploadException("["+fileName+"] 파일 업로드에 실패하였습니다. 다시 시도하십시오.",e);
+        if (tlogDTO.getBackgroundImg() != null) {
+            // 이미지 저장
+            fileName = StringUtils.cleanPath(tlogDTO.getBackgroundImg().getOriginalFilename());
+
+            try {
+                // 파일명에 부적합 문자가 있는지 확인한다.
+                if(fileName.contains(".."))
+                    throw new FileUploadException("파일명에 부적합 문자가 포함되어 있습니다. " + fileName);
+
+                savedFileName = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss")) + fileName;
+                Path targetLocation = this.fileLocation.resolve(savedFileName);
+                Files.copy(tlogDTO.getBackgroundImg().getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+            }catch(Exception e) {
+                throw new FileUploadException("["+fileName+"] 파일 업로드에 실패하였습니다. 다시 시도하십시오.",e);
+            }
         }
 
         // Tlog 저장
         Tlog tlog = tlogDTO.toTlog();
-        tlog.setBackgroundImg(fileName);
+        tlog.setBackgroundImg(savedFileName);
         repository.save(tlog);
 
         return tlog.getId();

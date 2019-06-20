@@ -33,17 +33,11 @@ public class TlogDTO extends BaseDTO {
         tlog.setId(this.id);
         tlog.setAccount(Account.builder().id(this.accountId).build());
         tlog.setTitle(this.title);
-        tlog.setBackgroundImg(this.backgroundImg.getOriginalFilename());
+        if (this.backgroundImg != null) tlog.setBackgroundImg(this.backgroundImg.getOriginalFilename());
         tlog.setStartDate(this.startDate);
         tlog.setLastDate(this.lastDate);
-
-        if (this.dataCreated != null) {
-            tlog.setDataCreated(this.dataCreated);
-        }
-
-        if (this.lastUpdated != null) {
-            tlog.setLastUpdated(this.lastUpdated);
-        }
+        if (this.dataCreated != null) tlog.setDataCreated(this.dataCreated);
+        if (this.lastUpdated != null) tlog.setLastUpdated(this.lastUpdated);
 
         return tlog;
     }
