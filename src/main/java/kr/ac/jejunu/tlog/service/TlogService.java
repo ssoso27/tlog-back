@@ -1,9 +1,11 @@
 package kr.ac.jejunu.tlog.service;
 
 import kr.ac.jejunu.tlog.dto.TlogDTO;
+import kr.ac.jejunu.tlog.entity.Hashtag;
 import kr.ac.jejunu.tlog.entity.Tlog;
 import kr.ac.jejunu.tlog.exception.FileUploadException;
 import kr.ac.jejunu.tlog.property.FileUploadProperties;
+import kr.ac.jejunu.tlog.repository.HashtagRepository;
 import kr.ac.jejunu.tlog.repository.TlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -17,6 +19,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,6 +28,9 @@ public class TlogService {
 
     @Autowired
     TlogRepository repository;
+
+    @Autowired
+    HashtagRepository hashtagRepo;
 
     @Autowired
     public TlogService(FileUploadProperties prop) {
@@ -68,6 +74,15 @@ public class TlogService {
         Tlog tlog = tlogDTO.toTlog();
         tlog.setBackgroundImg(savedFileName);
         repository.save(tlog);
+
+        // 해시태그 저장
+        if (tlogDTO.getHashtags() != null) {
+            ArrayList<Hashtag> hashtagList = new ArrayList<Hashtag>();
+            for (String hashtag: tlogDTO.getHashtags()) {
+                hashtagList.add(Hashtag.builder().tlog(tlog).content(hashtag).build());
+            }
+            hashtagRepo.saveAll(hashtagList);
+        }
 
         return tlog.getId();
     }

@@ -20,6 +20,7 @@ public class TlogDTO extends BaseDTO {
     private Long accountId;
     private String title;
     private MultipartFile backgroundImg;
+    private String[] hashtags;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
