@@ -1,3 +1,6 @@
+### upload file ###
+/uploads
+
 HELP.md
 .gradle
 /build/

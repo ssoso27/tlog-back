@@ -36,8 +36,14 @@ public class TlogDTO extends BaseDTO {
         tlog.setBackgroundImg(this.backgroundImg.getOriginalFilename());
         tlog.setStartDate(this.startDate);
         tlog.setLastDate(this.lastDate);
-        tlog.setDataCreated(this.dataCreated);
-        tlog.setLastUpdated(this.lastUpdated);
+
+        if (this.dataCreated != null) {
+            tlog.setDataCreated(this.dataCreated);
+        }
+
+        if (this.lastUpdated != null) {
+            tlog.setLastUpdated(this.lastUpdated);
+        }
 
         return tlog;
     }
