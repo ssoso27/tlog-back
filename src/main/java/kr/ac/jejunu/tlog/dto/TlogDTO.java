@@ -29,17 +29,12 @@ public class TlogDTO extends BaseDTO {
     private LocalDate lastDate;
 
     public Tlog toTlog() {
-        Tlog tlog = new Tlog();
-
-        tlog.setId(this.id);
-        tlog.setAccount(Account.builder().id(this.accountId).build());
-        tlog.setTitle(this.title);
-        if (this.backgroundImg != null) tlog.setBackgroundImg(this.backgroundImg.getOriginalFilename());
-        tlog.setStartDate(this.startDate);
-        tlog.setLastDate(this.lastDate);
-        if (this.dataCreated != null) tlog.setDataCreated(this.dataCreated);
-        if (this.lastUpdated != null) tlog.setLastUpdated(this.lastUpdated);
-
-        return tlog;
+        return Tlog.builder()
+                .id(id)
+                .account(Account.builder().id(this.accountId).build())
+                .title(title)
+                .startDate(startDate)
+                .lastDate(lastDate)
+                .build();
     }
 }

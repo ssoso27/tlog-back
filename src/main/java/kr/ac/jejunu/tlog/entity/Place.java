@@ -1,9 +1,6 @@
 package kr.ac.jejunu.tlog.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,6 +11,7 @@ import java.time.LocalDateTime;
 @Table(name="places")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Place extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,5 +25,5 @@ public class Place extends BaseEntity {
     private String name;
 
     @Column(name = "order")
-    private Integer order;
+    private Long order;
 }

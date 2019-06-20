@@ -1,9 +1,6 @@
 package kr.ac.jejunu.tlog.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "memories")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Memory extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,5 +27,5 @@ public class Memory extends BaseEntity {
     private String content;
 
     @Column(name = "order")
-    private Integer order;
+    private Long order;
 }
