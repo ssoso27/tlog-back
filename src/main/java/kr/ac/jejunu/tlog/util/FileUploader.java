@@ -17,11 +17,13 @@ import java.time.format.DateTimeFormatter;
 @Component
 public class FileUploader {
     private final Path fileLocation;
+    private final String preurl;
 
     @Autowired
     public FileUploader(FileUploadProperties prop) {
         this.fileLocation = Paths.get(prop.getUploadDir())
                 .toAbsolutePath().normalize();
+        this.preurl = prop.getImagePreurl();
         System.out.println(this.fileLocation.toUri().toString());
 
         try {
@@ -47,6 +49,6 @@ public class FileUploader {
         }catch(Exception e) {
             throw new FileUploadException("["+fileName+"] 파일 업로드에 실패하였습니다. 다시 시도하십시오.",e);
         }
-        return savedFileName;
+        return preurl + savedFileName;
     }
 }
