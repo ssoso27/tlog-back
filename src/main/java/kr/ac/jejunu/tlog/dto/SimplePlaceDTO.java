@@ -1,23 +1,21 @@
 package kr.ac.jejunu.tlog.dto;
 
-import kr.ac.jejunu.tlog.entity.Memory;
 import kr.ac.jejunu.tlog.entity.Place;
 import kr.ac.jejunu.tlog.entity.Tdate;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.ArrayList;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
-public class PlaceDTO extends BaseDTO {
+public class SimplePlaceDTO {
     private Long id;
     private Long tdateId;
     private Integer seq;
     private String name;
-    private MemoryDTO[] memories;
 
     public Place toPlace() {
         return Place.builder()
@@ -26,15 +24,5 @@ public class PlaceDTO extends BaseDTO {
                 .seq(seq)
                 .tdate(Tdate.builder().id(tdateId).build())
                 .build();
-    }
-
-    public ArrayList<Memory> getMemoryEntities() {
-        ArrayList<Memory> list = new ArrayList<Memory>();
-        if (memories != null) {
-            for (MemoryDTO dto: memories) {
-                list.add(dto.toMemory());
-            }
-        }
-        return list;
     }
 }

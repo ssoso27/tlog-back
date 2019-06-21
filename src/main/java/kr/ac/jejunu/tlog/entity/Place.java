@@ -24,6 +24,6 @@ public class Place extends BaseEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "order")
-    private Long order;
+    @Column(name = "seq")
+    private Integer seq;
 }

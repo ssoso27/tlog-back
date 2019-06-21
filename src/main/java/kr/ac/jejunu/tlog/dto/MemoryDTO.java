@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class MemoryDTO extends BaseDTO {
     private Long id;
     private Long placeId;
-    private Long order;
+    private Long seq;
     private MultipartFile image;
     private String content;
 
@@ -21,7 +21,7 @@ public class MemoryDTO extends BaseDTO {
         return Memory.builder()
                 .id(id)
                 .content(content)
-                .order(order)
+                .seq(seq)
                 .place(Place.builder().id(placeId).build())
                 .image(image.getOriginalFilename())
                 .build();

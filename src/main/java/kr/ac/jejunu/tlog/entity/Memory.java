@@ -26,6 +26,6 @@ public class Memory extends BaseEntity {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "order")
-    private Long order;
+    @Column(name = "seq")
+    private Long seq;
 }
