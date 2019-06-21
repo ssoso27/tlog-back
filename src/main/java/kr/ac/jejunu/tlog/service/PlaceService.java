@@ -11,9 +11,13 @@ public class PlaceService {
     @Autowired
     PlaceRepository repository;
 
-    public Long create(SimplePlaceDTO dto) {
-        Place place = dto.toPlace();
-        repository.save(place);
-        return place.getId();
+    public SimplePlaceDTO create(SimplePlaceDTO dto) {
+        return repository.save(dto.toPlace()).toSimpleDTO();
+    }
+
+    public SimplePlaceDTO update(SimplePlaceDTO dto) {
+        System.out.println(dto.getDataCreated());
+        System.out.println(dto.getLastUpdated());
+        return repository.save(dto.toPlace()).toSimpleDTO();
     }
 }

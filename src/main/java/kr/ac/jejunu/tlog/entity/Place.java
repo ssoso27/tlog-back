@@ -2,10 +2,10 @@ package kr.ac.jejunu.tlog.entity;
 
 import kr.ac.jejunu.tlog.dto.MemoryDTO;
 import kr.ac.jejunu.tlog.dto.PlaceDTO;
+import kr.ac.jejunu.tlog.dto.SimplePlaceDTO;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -37,6 +37,17 @@ public class Place extends BaseEntity {
                 .seq(seq)
                 .tdateId(tdate.getId())
                 .memories(memories)
+                .dataCreated(dataCreated)
+                .lastUpdated(lastUpdated)
+                .build();
+    }
+
+    public SimplePlaceDTO toSimpleDTO() {
+        return SimplePlaceDTO.builder()
+                .id(id)
+                .name(name)
+                .seq(seq)
+                .tdateId(tdate.getId())
                 .dataCreated(dataCreated)
                 .lastUpdated(lastUpdated)
                 .build();
