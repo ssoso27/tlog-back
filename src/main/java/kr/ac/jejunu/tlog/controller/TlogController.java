@@ -27,4 +27,9 @@ public class TlogController {
     public Long create(@ModelAttribute TlogDTO tlogDTO) {
         return service.create(tlogDTO);
     }
+
+    @GetMapping("/{id}")
+    public TlogDTO get(@PathVariable Long id) {
+        return service.get(id);
+    }
 }

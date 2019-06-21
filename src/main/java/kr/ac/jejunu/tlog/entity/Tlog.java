@@ -1,9 +1,11 @@
 package kr.ac.jejunu.tlog.entity;
 
+import kr.ac.jejunu.tlog.dto.TlogDTO;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,4 +34,18 @@ public class Tlog extends BaseEntity {
 
     @Column(name = "last_date")
     private LocalDate lastDate;
+
+    public TlogDTO toDTO(String[] hashtagList) {
+        return TlogDTO.builder()
+                .id(id)
+                .accountId(account.getId())
+                .title(title)
+                .imageUrl(backgroundImg)
+                .hashtags(hashtagList)
+                .startDate(startDate)
+                .lastDate(lastDate)
+                .dataCreated(dataCreated)
+                .lastUpdated(lastUpdated)
+                .build();
+    }
 }

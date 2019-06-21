@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 @Service
 public class TlogService {
@@ -51,5 +52,19 @@ public class TlogService {
         }
 
         return tlog.getId();
+    }
+
+    public TlogDTO get(Long id) {
+        Tlog tlog = repository.findById(id).orElse(null);
+
+        List<Hashtag> hashtagList = hashtagRepo.findAllByTlogId(tlog.getId());
+        ArrayList<String> contents = new ArrayList<String>();
+        for (Hashtag hashtag: hashtagList) {
+            contents.add(hashtag.getContent());
+        }
+        String[] hashtags = new String[contents.size()];
+        hashtags = contents.toArray(hashtags);
+
+        return tlog.toDTO(hashtags);
     }
 }

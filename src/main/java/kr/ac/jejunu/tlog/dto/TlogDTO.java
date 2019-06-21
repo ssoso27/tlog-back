@@ -2,14 +2,12 @@ package kr.ac.jejunu.tlog.dto;
 
 import kr.ac.jejunu.tlog.entity.Account;
 import kr.ac.jejunu.tlog.entity.Tlog;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -20,6 +18,7 @@ public class TlogDTO extends BaseDTO {
     private Long accountId;
     private String title;
     private MultipartFile backgroundImg;
+    private String imageUrl;
     private String[] hashtags;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -27,6 +26,19 @@ public class TlogDTO extends BaseDTO {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate lastDate;
+
+    @Builder
+    public TlogDTO(LocalDateTime dataCreated, LocalDateTime lastUpdated, Long id, Long accountId, String title, MultipartFile backgroundImg, String imageUrl, String[] hashtags, LocalDate startDate, LocalDate lastDate) {
+        super(dataCreated, lastUpdated);
+        this.id = id;
+        this.accountId = accountId;
+        this.title = title;
+        this.backgroundImg = backgroundImg;
+        this.imageUrl = imageUrl;
+        this.hashtags = hashtags;
+        this.startDate = startDate;
+        this.lastDate = lastDate;
+    }
 
     public Tlog toTlog() {
         return Tlog.builder()
