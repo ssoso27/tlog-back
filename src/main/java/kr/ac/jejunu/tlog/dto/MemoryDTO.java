@@ -18,12 +18,13 @@ public class MemoryDTO extends BaseDTO {
     private String content;
 
     public Memory toMemory() {
-        return Memory.builder()
-                .id(id)
-                .content(content)
-                .seq(seq)
-                .place(Place.builder().id(placeId).build())
-                .image(image.getOriginalFilename())
-                .build();
+        Memory memory = Memory.builder()
+                        .id(id)
+                        .content(content)
+                        .seq(seq)
+                        .place(Place.builder().id(placeId).build())
+                        .build();
+        if (image != null) memory.setImage(image.getOriginalFilename());
+        return memory;
     }
 }
