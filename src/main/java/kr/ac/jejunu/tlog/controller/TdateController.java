@@ -18,4 +18,9 @@ public class TdateController {
     public Long create(@RequestBody SimpleTdateDTO tdateDTO) {
         return service.create(tdateDTO);
     }
+
+    @GetMapping("/{id}")
+    public TdateDTO get(@PathVariable Long id) {
+        return service.get(id);
+    }
 }

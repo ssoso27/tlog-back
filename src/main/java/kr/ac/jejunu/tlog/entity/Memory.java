@@ -1,5 +1,6 @@
 package kr.ac.jejunu.tlog.entity;
 
+import kr.ac.jejunu.tlog.dto.MemoryDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,4 +29,15 @@ public class Memory extends BaseEntity {
 
     @Column(name = "seq")
     private Long seq;
+
+    public MemoryDTO toDTO() {
+        return MemoryDTO.builder()
+                .id(id)
+                .placeId(place.getId())
+                .content(content)
+                .seq(seq)
+                .dataCreated(dataCreated)
+                .lastUpdated(lastUpdated)
+                .build();
+    }
 }
