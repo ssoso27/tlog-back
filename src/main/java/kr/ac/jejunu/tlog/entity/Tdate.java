@@ -1,9 +1,6 @@
 package kr.ac.jejunu.tlog.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,6 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name="tdates")
+@Builder
 public class Tdate extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
