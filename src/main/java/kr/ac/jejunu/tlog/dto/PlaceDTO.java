@@ -30,8 +30,10 @@ public class PlaceDTO extends BaseDTO {
 
     public ArrayList<Memory> getMemoryEntities() {
         ArrayList<Memory> list = new ArrayList<Memory>();
-        for (MemoryDTO dto: memories) {
-            list.add(dto.toMemory());
+        if (memories != null) {
+            for (MemoryDTO dto: memories) {
+                list.add(dto.toMemory());
+            }
         }
         return list;
     }
