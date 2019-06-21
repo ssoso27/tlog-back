@@ -36,6 +36,7 @@ public class Memory extends BaseEntity {
                 .placeId(place.getId())
                 .content(content)
                 .seq(seq)
+                .imageUrl(image)
                 .dataCreated(dataCreated)
                 .lastUpdated(lastUpdated)
                 .build();

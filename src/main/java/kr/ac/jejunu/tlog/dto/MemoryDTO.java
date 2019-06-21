@@ -15,15 +15,17 @@ public class MemoryDTO extends BaseDTO {
     private Long placeId;
     private Long seq;
     private MultipartFile image;
+    private String imageUrl;
     private String content;
 
     @Builder
-    public MemoryDTO(LocalDateTime dataCreated, LocalDateTime lastUpdated, Long id, Long placeId, Long seq, MultipartFile image, String content) {
+    public MemoryDTO(LocalDateTime dataCreated, LocalDateTime lastUpdated, Long id, Long placeId, Long seq, MultipartFile image, String imageUrl, String content) {
         super(dataCreated, lastUpdated);
         this.id = id;
         this.placeId = placeId;
         this.seq = seq;
         this.image = image;
+        this.imageUrl = imageUrl;
         this.content = content;
     }
 
